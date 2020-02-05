@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace TechJobsConsole
 {
     class Program
+
     {
         static void Main(string[] args)
         {
@@ -63,7 +64,8 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+
+                        PrintJobs(JobData.FindByValue(searchTerm));
                     }
                     else
                     {
@@ -118,7 +120,14 @@ namespace TechJobsConsole
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
-            Console.WriteLine("printJobs is not implemented yet");
+            for (int i=0; i< someJobs.Count; i++)
+            {
+                foreach (KeyValuePair<string,string> item in someJobs[i])
+                {
+                    Console.WriteLine("{0}: {1}", item.Key, item.Value);
+                }
+                Console.WriteLine("********");
+            }
         }
     }
 }
